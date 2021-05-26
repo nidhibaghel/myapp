@@ -7,13 +7,13 @@ pipeline {
       [key: 'repository', regexpFilter: '[^a-z_-]', value: '$.repository']
      ],
      causeString: 'Triggered on $ref',
-     regexpFilterExpression: 'generic refs/heads/' + BRANCH_NAME,
+     regexpFilterExpression: 'myapp refs/heads/' + BRANCH_NAME,
      regexpFilterText: '$repository $ref',
      printContributedVariables: true,
      printPostContent: true
     )
   }
-  
+
   stages {
     stage('Test Generic Trigger') {
       steps {

@@ -13,6 +13,7 @@ pipeline {
      printPostContent: true
     )
   }
+  
   stages {
     stage('Test Generic Trigger') {
       steps {

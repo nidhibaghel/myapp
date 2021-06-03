@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp1
+  labels:
+    app: myapp1
+spec:
+  selector:
+    matchLabels:
+      app: myapp1
+  replicas: 1    
+  template:
+    metadata:
+      labels:
+        app: myapp1
+    spec:
+      containers:
+      - name: myapp1
+        image: "myapp:v1"
+        ports:
+        - containerPort: 80
+          name: myapp1
+     
+--- 
+apiVersion: v1
+kind: Service
+metadata: 
+  labels: 
+    app: myapp1
+  name: myapp1
+spec: 
+  ports: 
+    - 
+      name: myapp1
+      port: 8087
+      targetPort: 80
+  selector: 
+    app: myapp1
+  type: LoadBalancer
